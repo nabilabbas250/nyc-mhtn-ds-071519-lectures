@@ -1,13 +1,12 @@
 class Calculator:
+    #allowing the class to take in initial data
     def __init__(self, data):
+        assert all(isinstance(x, (int, float)) for x in data), "list can only be numbers"
+        
         self.data = data
         self.update_stats()
-#         self.length = len(data)
-#         self.mean = self.calc_mean()
-#         self.median = self.calc_median()
-#         self.variance = self.calc_var()
-#         self.standev = self.calc_std()
-    
+        
+#Function to update all of these statistics when it gets data    
     def update_stats(self):
         self.length = len(self.data)
         self.mean = self.calc_mean()
@@ -42,10 +41,10 @@ class Calculator:
         return self.variance**0.5
     
     def add_data(self, new_data):
-        self.data.extend(new_data)
+        self.data.extend(new_data)  #allows a list to be combined with initial list
         self.update_stats()
         return
     def remove_data(self, index = None):
-        del(self.data[index])
-        #del(self.data, index)
+        del(self.data[index])   # will delete 
+        #del(self.data, index)  #disregard, sean's initial recommendation
         self.update_stats()
